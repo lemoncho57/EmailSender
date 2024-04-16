@@ -84,7 +84,7 @@ namespace EmailSender
                         message.Body = bodyTBox.Text;
 
                         client.Send(message);
-                        MessageBox.Show("Successfully send email!");
+                        MessageBox.Show("Successfully sent email!");
                     }
                 }
                 catch (SmtpException ex)
