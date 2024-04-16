@@ -36,7 +36,6 @@ namespace EmailSender
         {
             emailTBox.Text = email;
             appPasswordTBox.Text = appPassword;
-
         }
 
         private void changeB_Click(object sender, EventArgs e)
