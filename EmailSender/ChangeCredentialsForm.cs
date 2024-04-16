@@ -34,8 +34,8 @@ namespace EmailSender
 
         private void ChangeCredentialsForm_Load(object sender, EventArgs e)
         {
-            email = emailTBox.Text;
-            appPassword = appPasswordTBox.Text;
+            emailTBox.Text = email;
+            appPasswordTBox.Text = appPassword;
         }
 
         private void changeB_Click(object sender, EventArgs e)
