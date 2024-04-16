@@ -8,10 +8,19 @@ namespace EmailSender
     {
         private string path = "config.data";
         private bool showStartupMessage = true;
+
         ChangeCredentialsForm credentialForm = new ChangeCredentialsForm();
+        ChangeServerForm serverForm = new ChangeServerForm();
+        private string credentialFormPath;
+
         public Form1()
         {
             InitializeComponent();
+            credentialFormPath = credentialForm.path;
+            if (!File.Exists(credentialFormPath))
+            {
+                credentialForm.ShowDialog();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +53,7 @@ namespace EmailSender
 
             if (showStartupMessage)
             {
-                DialogResult result = MessageBox.Show("Test", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Hello! This is a email sender made by Lemoncho \nThe default provider is gmail but you can change it to whatever you like", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     using (StreamWriter sw = new StreamWriter(path))
@@ -60,8 +69,8 @@ namespace EmailSender
         {
             using (SmtpClient client = new SmtpClient())
             {
-                client.Host = "smtp.gmail.com";
-                client.Port = 587;
+                client.Host = serverForm.ip;
+                client.Port = int.Parse(serverForm.port);
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
                 client.EnableSsl = true;
@@ -77,9 +86,14 @@ namespace EmailSender
                         client.Send(message);
                         MessageBox.Show("Successfully send email!");
                     }
-                }catch (SmtpException ex)
+                }
+                catch (SmtpException ex)
                 {
-                    MessageBox.Show("Unable to send email!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Unable to send email! Try checking your ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("from, to, to(email) fields CANNOT be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -87,6 +101,20 @@ namespace EmailSender
         private void changeCredentialsB_Click(object sender, EventArgs e)
         {
             credentialForm.ShowDialog();
+        }
+
+        private void changeServerB_Click(object sender, EventArgs e)
+        {
+            serverForm.ShowDialog();
+        }
+
+        private void clearB_Click(object sender, EventArgs e)
+        {
+            fromTBox.Text = "";
+            toTBox.Text = "";
+            toEmailTBox.Text = "";
+            subjectTbox.Text = "";
+            bodyTBox.Text = "";
         }
     }
 }

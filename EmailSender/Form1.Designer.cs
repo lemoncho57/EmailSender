@@ -41,6 +41,11 @@
             changeCredentialsB = new Button();
             label5 = new Label();
             toEmailTBox = new TextBox();
+            changeServerB = new Button();
+            clearB = new Button();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -151,11 +156,68 @@
             toEmailTBox.Size = new Size(406, 23);
             toEmailTBox.TabIndex = 3;
             // 
+            // changeServerB
+            // 
+            changeServerB.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            changeServerB.Location = new Point(193, 373);
+            changeServerB.Name = "changeServerB";
+            changeServerB.Size = new Size(190, 30);
+            changeServerB.TabIndex = 11;
+            changeServerB.Text = "Change provider(Server)";
+            changeServerB.UseVisualStyleBackColor = true;
+            changeServerB.Click += changeServerB_Click;
+            // 
+            // clearB
+            // 
+            clearB.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            clearB.Location = new Point(585, 373);
+            clearB.Name = "clearB";
+            clearB.Size = new Size(103, 30);
+            clearB.TabIndex = 12;
+            clearB.Text = "Clear";
+            clearB.UseVisualStyleBackColor = true;
+            clearB.Click += clearB_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label6.Location = new Point(585, 98);
+            label6.Name = "label6";
+            label6.Size = new Size(73, 19);
+            label6.TabIndex = 13;
+            label6.Text = "*required";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label7.Location = new Point(585, 58);
+            label7.Name = "label7";
+            label7.Size = new Size(73, 19);
+            label7.TabIndex = 14;
+            label7.Text = "*required";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label8.Location = new Point(585, 136);
+            label8.Name = "label8";
+            label8.Size = new Size(73, 19);
+            label8.TabIndex = 15;
+            label8.Text = "*required";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 451);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(clearB);
+            Controls.Add(changeServerB);
             Controls.Add(toEmailTBox);
             Controls.Add(label5);
             Controls.Add(changeCredentialsB);
@@ -192,5 +254,10 @@
         private Button changeCredentialsB;
         private Label label5;
         private TextBox toEmailTBox;
+        private Button changeServerB;
+        private Button clearB;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }

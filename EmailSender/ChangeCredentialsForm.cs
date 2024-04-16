@@ -12,7 +12,7 @@ namespace EmailSender
 {
     public partial class ChangeCredentialsForm : Form
     {
-        private string path = "cred.data";
+        public string path { get; private set; } = "cred.data";
 
         public string email { get; private set; }
         public string appPassword { get; private set; }
@@ -20,22 +20,22 @@ namespace EmailSender
         public ChangeCredentialsForm()
         {
             InitializeComponent();
-        }
-
-        private void ChangeCredentialsForm_Load(object sender, EventArgs e)
-        {
             if (!File.Exists(path))
             {
                 File.Create(path);
             }
             using (StreamReader sr = new StreamReader(path))
             {
-                emailTBox.Text = sr.ReadLine().ToString();
-                appPasswordTBox.Text = sr.ReadLine().ToString();
-                email = emailTBox.Text;
-                appPassword = appPasswordTBox.Text;
+                email = sr.ReadLine().ToString();
+                appPassword = sr.ReadLine().ToString();
                 sr.Close();
             }
+        }
+
+        private void ChangeCredentialsForm_Load(object sender, EventArgs e)
+        {
+            email = emailTBox.Text;
+            appPassword = appPasswordTBox.Text;
         }
 
         private void changeB_Click(object sender, EventArgs e)
@@ -49,6 +49,8 @@ namespace EmailSender
                     sw.WriteLine(appPasswordTBox.Text);
                     sw.Close();
                     MessageBox.Show("Successfully changed credentials");
+                    email = emailTBox.Text;
+                    appPassword = appPasswordTBox.Text;
                 }
             }
             catch (IOException ex)
