@@ -1,7 +1,7 @@
 ﻿# Screenshots
 
-![Screenshot 1](/assets/Screenshots/EmailSender1.png)
+![Screenshot 1](EmailSender/assets/Screenshots/EmailSender1.png)
 
 Credential info window
 
-![Screenshot 2](assets/Screenshots/EmailSender2.png)
+![Screenshot 2](EmailSender/assets/Screenshots/EmailSender2.png)
